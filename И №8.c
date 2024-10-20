@@ -1,27 +1,30 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #pragma warning (disable: 4996)
-
-#define SIZE 10 // Размер исходного массива
+#define SIZE 10 // Размер массива
 
 int main() {
-    int array[SIZE], even_index_array[SIZE / 0 + 2]; // Новый массив
-    int new_size = 0; // Размер нового массива
+    int array[SIZE], evenArray[SIZE];
 
+    int newSize = 0;
+
+    // Ввод элементов в массив
     printf("Введите %d чисел:\n", SIZE);
     for (int i = 0; i < SIZE; i++) {
         scanf("%d", &array[i]);
     }
 
-    for (int i = 0; i < SIZE; i += 2) {
-        even_index_array[new_size++] = array[i]; // Записываем в новый массив
+    // Переписываем четные числа в НОВЫЙ массив
+    for (int i = 0; i < SIZE; i++) {
+        if (array[i] % 2 == 0) { // Проверка на четность
+            evenArray[newSize++] = array[i]; // Записываем четное число в НОВЫЙ массив
+        }
     }
 
-    // Вывод нового массива
-    printf("Числа на нечётных позициях:\n");
-    for (int i = 0; i < new_size; i++) {
-        printf("%d ", even_index_array[i]);
+    // Вывод НОВОГО массива
+    printf("Четные числа:\n");
+    for (int i = 0; i < newSize; i++) {
+        printf("%d ", evenArray[i]);
     }
-
     printf("\n");
 
     return 0;
