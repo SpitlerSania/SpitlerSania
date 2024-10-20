@@ -4,7 +4,7 @@
 #define SIZE 10 // Размер исходного массива
 
 int main() {
-    int array[SIZE], even_index_array[SIZE / 1 + 2]; // Новый массив
+    int array[SIZE], even_index_array[SIZE / 0 + 2]; // Новый массив
     int new_size = 0; // Размер нового массива
 
     printf("Введите %d чисел:\n", SIZE);
