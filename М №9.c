@@ -1,22 +1,24 @@
 ﻿#include <stdio.h>
 #pragma warning (disable: 4996)
 
-int xorAllBits(int n) {
-    int result = 0; // Инициализируем результат
-    while (n) {
-        result ^= (n & 1); // XOR с последним битом числа
-        n >>= 1; // Сдвигаем число вправо на 1 бит
+int xor_bits(int num) {
+    int result = 0;
+    while (num > 0) {
+        result ^= num & 1; // XOR последнего бита
+        num >>= 1;// Сдвиг в право
     }
     return result;
 }
 
 int main() {
-    int n;
-    printf("Введите целое число: ");
-    scanf("%d", &n);
+    int num;
 
-    int result = xorAllBits(n);
-    printf("Результат поксоривания всех битов числа %d: %d\n", n, result);
+    printf("Введите целое число: ");
+    scanf("%d", &num);
+
+    int result = xor_bits(num);
+
+    printf("Результат поксора всех битов: %d\n", result);
 
     return 0;
 }
