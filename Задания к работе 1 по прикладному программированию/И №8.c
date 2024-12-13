@@ -1,5 +1,7 @@
 #include <stdio.h>
+
 #pragma warning (disable: 4996)
+
 #define SIZE 10 // Размер массива
 
 int main() {
