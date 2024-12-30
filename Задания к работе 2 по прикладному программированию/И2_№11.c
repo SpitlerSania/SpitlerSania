@@ -103,7 +103,7 @@ int tokenize(
 }
 
 void test_tokenize() {
-    char* input = "I\t have no idea\n what to write\r here";
+    char* input = "I\t have no idea\n what to write\r here q w e r t y u i o p";
     char** lexems;
     size_t lexems_count;
 
