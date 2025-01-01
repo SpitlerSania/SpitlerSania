@@ -17,7 +17,7 @@ int is_space(int c) {
 
 int tokenize(
     char* initial,// Указатель на строку, из которой необходимо выделить лексемы.
-    int (*detector)(int),// Функция для определения (хороших) и (плохих) символов.
+    int (*detector)(int),// Функция для определения хороших и плохих символов.
     int accept_empty_lexems,// Допускать ли пустые лексемы.
     char*** lexems,// Указатель на массив лексем.
     size_t* lexems_count//Указатель на количество лексем.
@@ -103,7 +103,7 @@ int tokenize(
 }
 
 void test_tokenize() {
-    char* input = "I\t have no idea\n what to write\r here q w e r t y u i o p";
+    char* input = "I\t have no idea\n what to write\r here q w er t y u i o p ";
     char** lexems;
     size_t lexems_count;
 
