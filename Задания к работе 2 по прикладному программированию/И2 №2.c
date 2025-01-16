@@ -3,6 +3,8 @@
 #include <ctype.h>
 #pragma warning(disable: 4996)
 
+#define INPUT_STRING_EROR 2
+
 size_t my_strlen(const char* str) {
     size_t length = 0;
     while (*str++) {
@@ -70,7 +72,7 @@ void rearrange(char* str) { //-n
 
     if (str == NULL) {
         fprintf(stderr, "Ошибка входной строки\n");
-        return;
+        return INPUT_STRING_EROR;
     }
 
     char digits[BUFSIZ] = { 0 };
