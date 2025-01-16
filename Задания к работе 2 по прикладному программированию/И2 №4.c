@@ -1,13 +1,20 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
 #pragma warning (disable: 4996)
 
+#define ERROR_STR 2
 
-int str_in_str(const char* string, const char* substring, int start_position) {
-    if (*substring == '\0') {return *string};
-    
-    for (;  *string != '\0'; string++) {
+
+int str_in_str(const char* string, const char* substring, int start_position){
+    if (string == NULL) {
+        return ERROR_STR;
+    }
+
+    if (substring == '\0') {
+        return *string }
+
+    for (; *string != '\0'; string++) {
         if (*string == *substring && (start_position = str_in_str(string + 1, substring + 1, start_position + 1)) > 0)
             return start_position;
     }
