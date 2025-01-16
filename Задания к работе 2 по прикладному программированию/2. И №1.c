@@ -6,18 +6,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Функция перевода числа из десятичной системы счисления в систему счисления с основанием r (r от 2 до 5)
-void to_base_r(int n, int r) {
+char *to_base_r(int n, int r) {
     // Проверка на допустимость основания системы счисления
     if (r < 2 || r > 5) {
-        printf("Ошибка: основание должно быть от 2 до 5.\n");
-        return;
+        fprintf(stderr, "Ошибка: основание должно быть от 2 до 5.\n");
+        exit(EXIT_FAILURE);
     }
 
-    // Если число равно 0, то сразу выводим 0
+    // Если число равно 0, возвращаем строку "0"
     if (n == 0) {
-        printf("0\n");
-        return;
+        char *result = malloc(2); // Один символ + '\0'
+        result[0] = '0';
+        result[1] = '\0';
+        return result;
     }
 
     // Массив для хранения цифр результата
@@ -32,33 +33,35 @@ void to_base_r(int n, int r) {
             remainder = n & 1;
         }
         else if (r == 3) {
-            remainder = n & 3;
+            remainder = n % 3;
         }
         else if (r == 4) {
-            remainder = n & 3;
+            remainder = n % 4;
         }
         else if (r == 5) {
-            remainder = n & 4;
+            remainder = n % 5;
         }
         digits[i++] = remainder;
 
-        // Делим на основание r с помощью сдвига
-        if (r == 2) {
-            n = n >> 1; // Целочисленное деление на 2 с помощью сдвига
-        }
-        else if (r == 3) {
-            n = n >> 3;
-        }
-        else if (r == 4) {
-            n = n >> 4;
-        }
+        // Делим на основание r с помощью целочисленного деления
+        n /= r;
     }
 
-    // Вывод цифр результата в обратном порядке
-    for (int j = i - 1; j >= 0; j--) {
-        printf("%d", digits[j]);
+    // Выделение памяти под результат
+    char *result = malloc(i + 1); // i символов + '\0'
+    if (!result) {
+        perror("Не удалось выделить память");
+        exit(EXIT_FAILURE);
     }
-    printf("\n");
+
+    // Заполнение строки цифрами в обратном порядке
+    int j = 0;
+    for (int k = i - 1; k >= 0; k--) {
+        result[j++] = '0' + digits[k]; // Преобразуем целое число в ASCII-символ
+    }
+    result[j] = '\0'; // Завершаем строку нулевым символом
+
+    return result;
 }
 
 int main() {
