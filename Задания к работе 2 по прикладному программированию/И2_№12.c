@@ -15,7 +15,7 @@ void allocate_result(int*** result_decompositions, size_t* result_decompositions
         *result_decompositions = (int**)malloc(new_size * sizeof(int*));
         if (*result_decompositions == NULL) {
             printf("Ошибка выделения памяти\n");
-            exit(MEMORY_ERROR);
+            return (MEMORY_ERROR);
         }
         *result_decompositions_count = new_size;
     }
@@ -30,7 +30,7 @@ void find_decompositions(int value, int current_sum, int current_component, int*
         (*result_decompositions)[*result_index] = (int*)malloc((index + 1) * sizeof(int));
         if ((*result_decompositions)[*result_index] == NULL) {
             printf("Ошибка выделения памяти\n");
-            exit(MEMORY_ERROR);
+            return(MEMORY_ERROR);
         }
         (*result_decompositions)[*result_index][0] = index;
         for (size_t i = 0; i < index; ++i) {
