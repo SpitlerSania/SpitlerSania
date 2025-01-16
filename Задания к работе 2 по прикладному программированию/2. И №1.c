@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <locale.h>
-
-#include <stdio.h>
 #include <stdlib.h>
 
 #define ErRoR 2
