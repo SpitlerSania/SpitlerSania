@@ -6,11 +6,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define ErRoR 2
+#define ErRoR MeMoRy 3
+
 char *to_base_r(int n, int r) {
     // Проверка на допустимость основания системы счисления
     if (r < 2 || r > 5) {
         fprintf(stderr, "Ошибка: основание должно быть от 2 до 5.\n");
-        exit(EXIT_FAILURE);
+        return ErRoR;
     }
 
     // Если число равно 0, возвращаем строку "0"
@@ -51,7 +54,7 @@ char *to_base_r(int n, int r) {
     char *result = malloc(i + 1); // i символов + '\0'
     if (!result) {
         perror("Не удалось выделить память");
-        exit(EXIT_FAILURE);
+        return ErRoR;
     }
 
     // Заполнение строки цифрами в обратном порядке
