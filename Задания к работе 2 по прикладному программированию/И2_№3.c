@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
+#define UNKNOW FLAG 2
+
 
 void return_of_resources(int flag, ...) {
     va_list args;
@@ -26,7 +28,7 @@ void return_of_resources(int flag, ...) {
         }
 
         else {
-            printf("Unknown flag: %d\n", action_flag);
+           return UNKNOW FLAG;
         }
     }
     va_end(args);
