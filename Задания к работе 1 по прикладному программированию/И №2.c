@@ -1,23 +1,31 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #include <string.h>
+#define EMPTY_STRING 1
 
-void reverse_string(char* str) { //Функция переворота строки
-    int len = strlen(str);
-    int i, j;
+char Revers_String(char* str) {
+	int len = strlen(str);
 
-    for (i = 0, j = len - 1; i < j; i++, j--) { //Обмен значений между символами
-        char temp = str[i];
-        str[i] = str[j];
-        str[j] = temp;
-    }
+	int i, temp;
+
+	if (str == NULL) {
+		printf("Error");
+		return EMPTY_STRING;
+	}
+
+	for (i = 0; i < len / 2; ++i) {
+		temp = str[i];
+		str[i] = str[len - i - 1];
+		str[len - i - 1] = temp;
+	}
+
+	return str;
 }
-//Главная функция
+
 int main() {
-    char str[] = "Ilya Sergeevich is a great teacher";
+	char str[] = "Hello World";
 
-    printf("Original line: %s\n", str);
-    reverse_string(str);
-    printf("Inverted line: %s\n", str);
+	Revers_String(str);
+	printf("%s", str);
 
-    return 0;
+	return 0;
 }
