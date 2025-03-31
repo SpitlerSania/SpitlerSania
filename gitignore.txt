@@ -1,0 +1,34 @@
+# Игнорируем системные папки IDE и сборки
+**/.vs/
+**/.idea/
+**/x64/
+**/x86/
+
+# Игнорируем временные файлы
+*.obj
+*.exe
+*.dll
+*.pdb
+*.idb
+*.ilk
+*.log
+*.user
+*.suo
+*.sdf
+*.aps
+*.ncb
+*.cache
+*.ipch
+
+# Игнорируем CMake файлы
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Игнорируем сборочные артефакты
+build/
+dist/
+out/
+Debug/
+Release/
